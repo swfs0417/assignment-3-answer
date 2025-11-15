@@ -1,0 +1,19 @@
+name: hello
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build: # job 이름
+    runs-on: ubuntu-latest # 깃허브에서 알아서 설정해줌
+    steps:
+      - name: checkout # 확인을 위한 이름
+        uses: actions/checkout@v3 # 푸시된 코드 가져오기 (github 제공 액션)
+      
+      - name: hello
+        run: |
+          echo "Hello"
+          echo secrets: ${{secrets.test_secret}}
+          echo vars: ${{vars.test_var}}
